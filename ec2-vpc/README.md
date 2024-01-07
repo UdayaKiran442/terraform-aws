@@ -2,4 +2,4 @@
 
 ### Architecture of infrastructure
 
-![infra photo](/Users/uday/Desktop/infra)
+![infra photo](/ec2-vpc/infra.png)
