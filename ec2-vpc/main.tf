@@ -70,3 +70,23 @@ resource "aws_security_group" "mysg" {
     Name = "web-sg"
   }
 }
+
+resource "aws_s3_bucket" "s3bucket" {
+  bucket = "devaramassjatara"
+}
+
+resource "aws_instance" "webserver1" {
+  ami = "ami-03f4878755434977f"
+  instance_type = "t2.micro"
+  security_groups = [ aws_security_group.mysg.id ]
+  subnet_id = aws_subnet.subnet1.id
+  user_data = base64encode(file("userdata.sh"))
+}
+
+resource "aws_instance" "webserver2" {
+  ami = "ami-03f4878755434977f"
+  instance_type = "t2.micro"
+  security_groups = [ aws_security_group.mysg.id ]
+  subnet_id = aws_subnet.subnet2.id
+  user_data = base64encode(file("userdata1.sh"))
+}
